@@ -28,7 +28,7 @@ router.get('/:id', async (req, res) => {
     });
 
     if (!productData) {
-      res.status(404).json({ message: 'There is no product matching this id!' });
+      res.status(404).json({ message: `There is no product matching ID #${req.params.id}!` });
       return;
     }
 
@@ -83,7 +83,7 @@ router.put('/:id', async (req, res) => {
     });
 
     if (!product) {
-      res.status(404).json({ message: 'There is no category matching this id!' });
+      res.status(404).json({ message: `There is no product matching ID #${req.params.id}!` });
       return;
     }
     if (!res.body) {
@@ -127,7 +127,7 @@ router.delete('/:id', async (req, res) => {
     const productData = await Product.findByPk(req.params.id);
 
     if (!productData) {
-      res.status(404).json({ message: 'There is no product matching this id!' });
+      res.status(404).json({ message: `There is no product matching ID #${req.params.id}!` });
       return;
     }
 

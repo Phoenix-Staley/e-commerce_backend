@@ -24,7 +24,7 @@ router.get('/:id', async (req, res) => {
     });
 
     if (!categoryData) {
-      res.status(404).json({ message: 'There is no category matching this id!' });
+      res.status(404).json({ message: `There is no category matching ID #${req.params.id}!` });
       return;
     }
 
@@ -56,11 +56,11 @@ router.put('/:id', async (req, res) => {
   // update a category by its `id` value
   try {
     const chosenCategory = await Category.findByPk(req.params.id);
-
     if (!chosenCategory) {
-      res.status(404).json({ message: 'There is no category matching this id!' });
+      res.status(404).json({ message: `There is no category matching ID #${req.params.id}!` });
       return;
     }
+    
     if (!req.body.category_name) {
       res.status(400).json({ message: 'PUT requests must contain a valid body.' });
       return;
@@ -84,7 +84,7 @@ router.delete('/:id', async (req, res) => {
   try {
     const doesExist = await Category.findByPk(req.params.id);
     if (!doesExist) {
-      res.status(404).json({ message: 'There is no category matching this id!' });
+      res.status(404).json({ message: `There is no category matching ID #${req.params.id}!` });
     }
 
     await Category.destroy({
