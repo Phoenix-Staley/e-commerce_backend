@@ -75,21 +75,23 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const responseMessage = { message: `Product with ID #${req.params.id} has been updated.`, update: req.body }
-    // update product data
-    const product = await Product.update(req.body, {
-      where: {
-        id: req.params.id
-      }
-    });
+    const product = await Product.findByPk(req.params.id);
 
     if (!product) {
       res.status(404).json({ message: `There is no product matching ID #${req.params.id}!` });
       return;
     }
-    if (!res.body) {
+    if (!req.body) {
       res.status(400).json({ message: 'PUT requests must contain a valid body.' });
       return;
     }
+
+    // update product data
+    const updatedProduct = await Product.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    });
 
     if (req.body.tagIds) {
       const productTags = await ProductTag.findAll({ where: { product_id: req.params.id } });
@@ -101,7 +103,7 @@ router.put('/:id', async (req, res) => {
       .map((tag_id) => {
         return {
           product_id: req.params.id,
-          tag_id,
+          tag_id
         };
       });
       // figure out which ones to remove
@@ -136,8 +138,8 @@ router.delete('/:id', async (req, res) => {
         id: req.params.id
       }
     });
-
     res.status(200).json({ message: `Product with ID #${req.params.id} has been deleted.` });
+    
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
