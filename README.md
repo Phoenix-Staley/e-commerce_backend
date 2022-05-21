@@ -14,7 +14,7 @@
 - [Contribute](#Contribute)
 
 ## Description
-This is a server-side API for an ecommerce-like website. It's written entirely in JavaScript uses Node as a runtime environment, Express for listening to requests and handling routes, and Sequelize to interact with a SQL database in a way that is easy to change from one SQL dialect to another (I.E. from MySQL to SQL Server). This API uses the CRUD methods (Create, Read, Update, and Delete) to manipulate the SQL database and keep track of products, product tags, and categories of products using both One-to-Many and Many-to-Many relationships.
+This is a server-side API for an ecommerce-like website. It's written entirely in JavaScript uses Node as a runtime environment, Express for listening to requests and handling routes, and Sequelize to interact with a SQL database in a way that is easy to change from one SQL dialect to another (I.E. from MySQL to SQL Server). It also uses dotenv to privately add SQL usernames and passwords that will be used on the server. This API uses the CRUD methods (Create, Read, Update, and Delete) to manipulate the SQL database and keep track of products, product tags, and categories of products using both One-to-Many and Many-to-Many relationships.
 
 ## Usage with Examples
 Clicking the image below will bring you to a quick demonstration showing the api and it's various functionalities.
