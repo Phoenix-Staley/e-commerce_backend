@@ -29,7 +29,8 @@ To install this, make sure you have MySQL and Node.js installed, then do the fol
 
 ## Usage with Examples
 Clicking the image below will bring you to a quick demonstration showing the api and it's various functionalities.
-[![E-commerce API Demo](https://img.youtube.com/vi/BjTE1DMRxoo/0.jpg)](https://youtu.be/BjTE1DMRxoo)
+
+[![E-commerce API Demo](https://img.youtube.com/vi/h9ij8g2WhEo/0.jpg)](https://youtu.be/h9ij8g2WhEo)
 
 ## Credits
 This projects was made by Phoenix Staley using sample code from the University of Washington's JavaScript bootcamp.
