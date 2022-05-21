@@ -51,6 +51,10 @@ router.post('/', async (req, res) => {
     }
   */
   try {
+    if (!req.body.product_name) {
+      res.status(400).json({ message: 'PUT requests must contain a valid body.' });
+      return;
+    }
     const product = await Product.create(req.body);
     if (req.body.tagIds.length) {
       const productTagIdArr = req.body.tagIds.map((tag_id) => {
@@ -139,7 +143,7 @@ router.delete('/:id', async (req, res) => {
       }
     });
     res.status(200).json({ message: `Product with ID #${req.params.id} has been deleted.` });
-    
+
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
